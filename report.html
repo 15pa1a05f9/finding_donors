@@ -12829,8 +12829,9 @@ This model has good  accuracy score and F-score on testing set. It takes low tim
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>The final model choosen for the task of identifying individuals that make more than $50,000 is AdaBoost.It works by combining several simple learners and creats an ensemble of learners that can predict whether an individual earns above 50k or not.It creates strong learner using weak learners.Training process is done through several rounds.It gives equal weight to each instance in first round. If the prediction is incorrect,the weights are updated giving more weight to incorrectly predicted instances.With each round, the model finds the best learner.The process continues until no further improvement can be made on the training dataset. 
-<a href="https://www.analyticsvidhya.com/blog/2015/11/quick-introduction-boosting-algorithms-machine-learning/">https://www.analyticsvidhya.com/blog/2015/11/quick-introduction-boosting-algorithms-machine-learning/</a></p>
+<p>The final model choosen for the task of identifying individuals that make more than $50,000 is AdaBoost.It works by combining several simple learners and creats an ensemble of learners that can predict whether an individual earns above 50k or not.It creates strong learner using weak learners.Training process is done through several rounds.It gives equal weight to each instance in first round.Decision Stumps( one-level decision trees) is prepared on the training data using the weighted samples.  Each decision stump makes one decision on one input variable and outputs a +1.0 or -1.0 value for the first or second class value. If the prediction is incorrect,the weights are updated giving more weight to incorrectly predicted instances.With each round, the model finds the best learner.Predictions are made by calculating the weighted average of the weak classifiers or by considering prediction has higher vote</p>
+<p>For a new input instance consider an example, 5 weak classifiers may predict the values 1.0, 1.0, -1.0, 1.0, -1.0. By taking majority vote,  model will predict a value of 1.0 or the first class.  If the sum is positive, then the first class is predicted, if negative the second class is predicted.</p>
+<p><a href="https://www.analyticsvidhya.com/blog/2015/11/quick-introduction-boosting-algorithms-machine-learning/">https://www.analyticsvidhya.com/blog/2015/11/quick-introduction-boosting-algorithms-machine-learning/</a></p>
 
 </div>
 </div>
@@ -12871,7 +12872,7 @@ This model has good  accuracy score and F-score on testing set. It takes low tim
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">AdaBoostClassifier</span>
 
 <span class="c1"># TODO: Initialize the classifier</span>
-<span class="n">clf</span> <span class="o">=</span><span class="n">AdaBoostClassifier</span><span class="p">()</span>
+<span class="n">clf</span> <span class="o">=</span><span class="n">AdaBoostClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># TODO: Create the parameters list you wish to tune, using a dictionary if needed.</span>
 <span class="c1"># HINT: parameters = {&#39;parameter_1&#39;: [value1, value2], &#39;parameter_2&#39;: [value1, value2]}</span>
